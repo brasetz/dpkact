@@ -1,12 +1,18 @@
 import { useState } from "react";
+import Home from "./Pages/Home";
+import Navbar from "./Components/Navbar";
+import Footer from "./Components/Footer";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
-    <>
-      <div className="text-4xl">Hello there</div>
-    </>
+    <BrowserRouter>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+      </Routes>
+      <Footer />
+    </BrowserRouter>
   );
 }
 

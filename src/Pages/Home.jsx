@@ -6,7 +6,7 @@ import Features from "../Components/Features";
 
 const Home = () => {
   return (
-    <div className="w-full bg-white">
+    <div className="w-full bg-gray-950">
       <Hero />
       <Campaigns />
       <Features />

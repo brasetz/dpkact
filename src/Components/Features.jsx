@@ -5,11 +5,11 @@ const Features = () => {
   return (
     <div className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-5 mx-auto lg:pb-20">
       <div className="mt-5 lg:mt-16 grid lg:grid-cols-3 gap-8 lg:gap-12">
-        <div className="lg:col-span-1">
-          <h2 className="font-bold text-2xl md:text-3xl text-gray-100">
+        <div className="lg:col-span-1 text-center md:text-start">
+          <h2 className="font-semibold text-xl md:text-3xl text-gray-100">
             Key Features of Lomi
           </h2>
-          <p className="mt-2 md:mt-4 text-gray-400">
+          <p className="mt-2 md:mt-4 text-gray-400 text-sm md:text-base">
             Lomi offers a powerful platform to bring your projects to life with ease. Discover the core features designed to support your campaign from start to finish.
           </p>
         </div>

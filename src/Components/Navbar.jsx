@@ -41,7 +41,7 @@ const Navbar = () => {
             ))}
             <a
               className="inline-flex items-center py-2 px-4 bg-lime-500 text-white font-medium text-sm rounded-full hover:bg-lime-600 transition-colors duration-300"
-              href="../templates/agency/index.html#contact"
+              href="#"
             >
               Connect wallet
             </a>

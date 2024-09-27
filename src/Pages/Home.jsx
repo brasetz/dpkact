@@ -6,10 +6,10 @@ import Features from "../Components/Features";
 
 const Home = () => {
   return (
-    <div className="w-full bg-gray-950">
+    <div className="w-full">
       <Hero />
-      <Campaigns />
       <Features />
+      <Campaigns />
       <Steps />
     </div>
   );

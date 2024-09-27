@@ -3,9 +3,9 @@ import { GoArrowUpRight, GoArrowRight } from "react-icons/go";
 
 const Hero = () => {
   return (
-    <div className="bg-gray-950 flex justify-center items-center pt-10 md:pt-20">
+    <div className="bg-gray-950 flex justify-center items-center pt-10 md:pt-24">
       <div className="flex absolute top-0 left-0 start-1/2 transform -translate-x-1/2 -translate-y-1/2">
-        <div className="bg-gradient-to-tl blur-3xl w-[60vw] h-[60vh] rounded-full origin-top-right -rotate-12 from-indigo-900/70 via-indigo-900/70 to-blue-900/70 "></div>
+        <div className="bg-gradient-to-tl blur-3xl w-[60vw] h-[60vh] rounded-full origin-top-right -rotate-12 from-lime-900/70 via-indigo-900/70 to-blue-900/70 "></div>
       </div>
 
       <div className="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 py-24 space-y-8">
@@ -28,7 +28,7 @@ const Hero = () => {
         </div>
 
         <div className="max-w-4xl text-center mx-auto">
-          <p className="text-xs md:text-base text-gray-300 font-light">
+          <p className="text-sm md:text-base text-gray-300 font-light">
             Lomi empowers collective success, harness the power of community to
             fund your vision, contribute to others, and track progress
             transparently on the blockchain.

@@ -11,15 +11,19 @@ const Navbar = () => {
   };
 
   return (
-    <header className="fixed top-3 inset-x-0 flex justify-center z-[9999] w-full before:absolute before:inset-0 before:max-w-[66rem] before:mx-auto before:rounded-full md:before:backdrop-blur-md md:before:bg-white/20">
-      <nav className="relative max-w-[66rem] w-full py-2 px-2 sm:px-5 flex items-center justify-between  rounded-full mx-2 lg:mx-auto shadow-sm sm:border border-white/10">
+    <header className="fixed top-3 inset-x-0 flex justify-center z-[9999] before:absolute before:inset-0 max-sm:mx-2 sm:before:max-w-[66rem] before:mx-auto before:rounded-full before:backdrop-blur-md before:bg-white/10">
+      <nav className="relative max-w-[66rem] w-full py-1 px-1 md:px-3 md:py-2 sm:px-5 flex items-center justify-between  rounded-full mx-2 lg:mx-auto shadow-sm sm:border border-white/10">
         <div className="flex justify-between items-center w-full">
           <div>
             <a
-              className="flex items-center space-x-3 text-xl font-semibold text-gray-50 hover:text-lime-400 transition-colors duration-300"
+              className="flex items-center space-x-3 text-lg md:text-xl md:font-semibold text-gray-50 hover:text-lime-400 transition-colors duration-300"
               href="/"
             >
-              <img src="/lomiLogo.png" alt="Logo" className="w-8 h-8" />
+              <img
+                src="/lomiLogo.png"
+                alt="Logo"
+                className="w-6 h-6 md:w-8 md:h-8"
+              />
               <span>1omi.</span>
             </a>
           </div>

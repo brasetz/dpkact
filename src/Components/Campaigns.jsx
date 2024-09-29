@@ -16,10 +16,11 @@ const Campaigns = () => {
       </div>
 
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {[0, 1, 2, 3, 4, 5].map((_) => (
+        {[0, 1, 2, 3, 4, 5].map((i) => (
           <a
+            key={i}
             className="group flex flex-col h-full border border-white/5 hover:border-transparent hover:shadow-lg focus:outline-none focus:border-transparent focus:shadow-lg transition duration-300 rounded-xl p-5 backdrop-blur-md  bg-white/5"
-            href="#"
+            href={`/campaign/${i}`}
           >
             <div className="aspect-w-16 aspect-h-11">
               <img

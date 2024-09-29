@@ -38,7 +38,7 @@ const Hero = () => {
         <div className="text-center">
           <a
             className="inline-flex justify-center items-center gap-x-3 text-center bg-gradient-to-tl from-lime-600 to-lime-600 shadow-lg shadow-transparent hover:shadow-lime-700/50 border border-transparent text-white text-sm font-medium rounded-full focus:outline-none focus:shadow-lime-700/50 py-3 px-6"
-            href="#"
+            href="/create-campaign"
           >
             Start Your Campaign
             <GoArrowRight className="shrink-0 size-4" />

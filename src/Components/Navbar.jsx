@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { NavbarLinks } from "../Utils/constants";
-import { HiMenu, HiX } from "react-icons/hi";
+import { useLocation } from "react-router-dom";
 import { TbMenu } from "react-icons/tb";
 import { LiaTimesSolid } from "react-icons/lia";
 
@@ -9,6 +9,8 @@ const Navbar = () => {
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
+
+  const location = useLocation();
 
   return (
     <header className="fixed top-3 inset-x-0 flex justify-center z-[9999] before:absolute before:inset-0 max-sm:mx-2 sm:before:max-w-[66rem] before:mx-auto before:rounded-full before:backdrop-blur-md before:bg-white/10">
@@ -33,8 +35,12 @@ const Navbar = () => {
             {NavbarLinks.map((link, idx) => (
               <a
                 key={idx}
-                className="text-sm font-medium text-gray-50 hover:text-lime-500 transition-colors duration-300"
-                href={`#${link.href}`}
+                className={`text-sm font-medium  hover:text-lime-400 transition-colors duration-300 ${
+                  location.pathname === link.href
+                    ? "text-lime-400"
+                    : "text-gray-50"
+                }`}
+                href={`${link.href}`}
               >
                 {link.name}
               </a>
@@ -68,7 +74,7 @@ const Navbar = () => {
             <a
               key={idx}
               className="text-sm font-medium text-gray-200 hover:text-lime-500 transition-colors duration-300"
-              href={`#${link.href}`}
+              href={`${link.href}`}
             >
               {link.name}
             </a>

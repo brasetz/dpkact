@@ -1,7 +1,9 @@
-import React from "react";
+import React from 'react'
 
 const CampaignDetail = () => {
-  return <div>CampaignDetail</div>;
-};
+  return (
+    <div>CampaignDetail</div>
+  )
+}
 
-export default CampaignDetail;
+export default CampaignDetail

@@ -1,4 +1,3 @@
-
 const BackersTable = () => {
   return (
     <div className="flex flex-col">
@@ -24,7 +23,7 @@ const BackersTable = () => {
                     scope="col"
                     className="px-6 py-3 text-start text-xs font-medium uppercase text-neutral-400"
                   >
-                    Time
+                    Contribution Date
                   </th>
                 </tr>
               </thead>

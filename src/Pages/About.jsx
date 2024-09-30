@@ -12,17 +12,17 @@ const About = () => {
       <div className="max-w-2xl lg:max-w-7xl mx-auto">
         <div className="mt-12 grid items-start lg:grid-cols-2 gap-6 lg:gap-16">
           <AboutPageCard />
-          <div className="divide-y  divide-neutral-800">
+          <div className="divide-y  divide-gray-800">
             {/* Telegram */}
             <div className="flex gap-x-7 py-6 cursor-pointer hover:bg-white/10 px-3">
-              <PiTelegramLogo className="shrink-0 size-6 mt-1.5  text-neutral-200" />
+              <PiTelegramLogo className="shrink-0 size-6 mt-1.5  text-gray-200" />
               <div className="grow">
-                <h3 className="font-semibold  text-neutral-200">Telegram</h3>
-                <p className="mt-1 text-sm  text-neutral-500">
+                <h3 className="font-semibold  text-gray-200">Telegram</h3>
+                <p className="mt-1 text-sm  text-gray-500">
                   Reach out to us on Telegram for quick support.
                 </p>
                 <a
-                  className="mt-2 inline-flex items-center gap-x-2 text-sm font-medium   focus:outline-none  text-neutral-400 hover:text-neutral-200 focus:text-neutral-200"
+                  className="mt-2 inline-flex items-center gap-x-2 text-sm font-medium   focus:outline-none  text-gray-300 hover:text-gray-200 focus:text-gray-200"
                   href="https://t.me/your_telegram"
                 >
                   Join Telegram
@@ -32,15 +32,15 @@ const About = () => {
 
             {/* GitHub */}
             <div className="flex gap-x-7 py-6 cursor-pointer hover:bg-white/10 px-3">
-              <FiGithub className="shrink-0 size-6 mt-1.5  text-neutral-200" />
+              <FiGithub className="shrink-0 size-6 mt-1.5  text-gray-200" />
               <div className="grow">
-                <h3 className="font-semibold  text-neutral-200">GitHub</h3>
-                <p className="mt-1 text-sm  text-neutral-500">
+                <h3 className="font-semibold  text-gray-200">GitHub</h3>
+                <p className="mt-1 text-sm  text-gray-500">
                   Check out our open-source projects on GitHub.
                 </p>
                 <a
-                  className="mt-2 inline-flex items-center gap-x-2 text-sm font-medium  hover: focus:outline-none focus: text-neutral-400 hover:text-neutral-200 focus:text-neutral-200"
-                  href="https://github.com/your_github"
+                  className="mt-2 inline-flex items-center gap-x-2 text-sm font-medium  hover: focus:outline-none focus: text-gray-300 hover:text-gray-200 focus:text-gray-200"
+                  href="https://github.com/halas77"
                 >
                   Visit GitHub
                 </a>
@@ -49,14 +49,14 @@ const About = () => {
 
             {/* X (Twitter) */}
             <div className="flex gap-x-7 py-6 cursor-pointer hover:bg-white/10 px-3">
-              <RiTwitterXFill className="shrink-0 size-6 mt-1.5  text-neutral-200" />
+              <RiTwitterXFill className="shrink-0 size-6 mt-1.5  text-gray-200" />
               <div className="grow">
-                <h3 className="font-semibold  text-neutral-200">X (Twitter)</h3>
-                <p className="mt-1 text-sm  text-neutral-500">
+                <h3 className="font-semibold  text-gray-200">X (Twitter)</h3>
+                <p className="mt-1 text-sm  text-gray-500">
                   Follow us for updates and announcements.
                 </p>
                 <a
-                  className="mt-2 inline-flex items-center gap-x-2 text-sm font-medium  hover: focus:outline-none focus: text-neutral-400 hover:text-neutral-200 focus:text-neutral-200"
+                  className="mt-2 inline-flex items-center gap-x-2 text-sm font-medium  hover: focus:outline-none focus: text-gray-300 hover:text-gray-200 focus:text-gray-200"
                   href="https://twitter.com/your_twitter"
                 >
                   Follow us on X
@@ -66,34 +66,34 @@ const About = () => {
 
             {/* Phone Number */}
             <div className="flex gap-x-7 py-6 cursor-pointer hover:bg-white/10 px-3">
-              <FiPhone className="shrink-0 size-6 mt-1.5  text-neutral-200" />
+              <FiPhone className="shrink-0 size-6 mt-1.5  text-gray-200" />
               <div className="grow">
-                <h3 className="font-semibold  text-neutral-200">Call Us</h3>
-                <p className="mt-1 text-sm  text-neutral-500">
+                <h3 className="font-semibold  text-gray-200">Call Us</h3>
+                <p className="mt-1 text-sm  text-gray-500">
                   You can reach us by phone for direct inquiries.
                 </p>
                 <a
-                  className="mt-2 inline-flex items-center gap-x-2 text-sm font-medium  hover: focus:outline-none focus: text-neutral-400 hover:text-neutral-200 focus:text-neutral-200"
-                  href="tel:+1234567890"
+                  className="mt-2 inline-flex items-center gap-x-2 text-sm font-medium  hover: focus:outline-none focus: text-gray-300 hover:text-gray-200 focus:text-gray-200"
+                  href="tel:+251938071193"
                 >
-                  +123 456 7890
+                  +251 938 071193
                 </a>
               </div>
             </div>
 
             {/* Email */}
             <div className="flex gap-x-7 py-6 cursor-pointer hover:bg-white/10 px-3">
-              <FiMail className="shrink-0 size-6 mt-1.5  text-neutral-200" />
+              <FiMail className="shrink-0 size-6 mt-1.5  text-gray-200" />
               <div className="grow">
-                <h3 className="font-semibold  text-neutral-200">Email Us</h3>
-                <p className="mt-1 text-sm  text-neutral-500">
+                <h3 className="font-semibold  text-gray-200">Email Us</h3>
+                <p className="mt-1 text-sm  text-gray-500">
                   Feel free to send us an email for any inquiries.
                 </p>
                 <a
-                  className="mt-2 inline-flex items-center gap-x-2 text-sm font-medium  hover: focus:outline-none focus: text-neutral-400 hover:text-neutral-200 focus:text-neutral-200"
-                  href="mailto:example@yourdomain.com"
+                  className="mt-2 inline-flex items-center gap-x-2 text-sm font-medium  hover: focus:outline-none focus: text-gray-300 hover:text-gray-200 focus:text-gray-200"
+                  href="mailto:dawitm777@gmail.com"
                 >
-                  example@yourdomain.com
+                  dawitm777@gmail.com
                 </a>
               </div>
             </div>

@@ -14,7 +14,7 @@ const CreateCampaignCard = () => {
               type="text"
               name="campaign-title"
               id="campaign-title"
-              className="py-3 px-4 block w-full rounded-lg text-sm focus:border-blue-500 disabled:opacity-50 disabled:pointer-events-none bg-gray-900 border border-white/20 text-gray-200 placeholder-gray-500 focus:ring-gray-600"
+              className="py-3 px-4 block w-full rounded-lg text-sm focus:border-blue-500 disabled:opacity-50 disabled:pointer-events-none bg-white/5 border border-white/20 text-gray-200 placeholder-gray-500 focus:ring-gray-600"
               placeholder="Enter campaign title"
             />
           </div>
@@ -31,7 +31,7 @@ const CreateCampaignCard = () => {
               id="campaign-description"
               name="campaign-description"
               rows="6"
-              className="py-3 px-4 block w-full rounded-lg text-sm focus:border-blue-500 disabled:opacity-50 disabled:pointer-events-none bg-gray-900 border border-white/20 text-gray-200 placeholder-gray-500 focus:ring-gray-600"
+              className="py-3 px-4 block w-full rounded-lg text-sm focus:border-blue-500 disabled:opacity-50 disabled:pointer-events-none bg-white/5 border border-white/20 text-gray-200 placeholder-gray-500 focus:ring-gray-600"
               placeholder="Describe your campaign..."
             ></textarea>
           </div>
@@ -49,7 +49,7 @@ const CreateCampaignCard = () => {
               step={"0.1"}
               name="campaign-goal"
               id="campaign-goal"
-              className="py-3 px-4 block w-full rounded-lg text-sm focus:border-blue-500 disabled:opacity-50 disabled:pointer-events-none bg-gray-900 border border-white/20 text-gray-200 placeholder-gray-500 focus:ring-gray-600"
+              className="py-3 px-4 block w-full rounded-lg text-sm focus:border-blue-500 disabled:opacity-50 disabled:pointer-events-none bg-white/5 border border-white/20 text-gray-200 placeholder-gray-500 focus:ring-gray-600"
               placeholder="Enter the funding goal"
             />
           </div>
@@ -66,7 +66,7 @@ const CreateCampaignCard = () => {
               type="number"
               name="campaign-duration"
               id="campaign-duration"
-              className="py-3 px-4 block w-full rounded-lg text-sm focus:border-blue-500 disabled:opacity-50 disabled:pointer-events-none bg-gray-900 border border-white/20 text-gray-200 placeholder-gray-500 focus:ring-gray-600"
+              className="py-3 px-4 block w-full rounded-lg text-sm focus:border-blue-500 disabled:opacity-50 disabled:pointer-events-none bg-white/5 border border-white/20 text-gray-200 placeholder-gray-500 focus:ring-gray-600"
               placeholder="Enter duration in days"
             />
           </div>

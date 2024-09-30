@@ -1,6 +1,6 @@
 import React from "react";
 import { projectImgURL, userURL } from "../Utils/constants";
-import { GoArrowRight, GoArrowUpRight } from "react-icons/go";
+import { GoArrowUpRight } from "react-icons/go";
 
 const Campaigns = () => {
   return (

@@ -5,6 +5,8 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import CampaignDetail from "./Pages/CampaignDetail";
 import CreateCampaign from "./Pages/CreateCampaign";
 import About from "./Pages/About";
+import Campaigns from "./Pages/Campaigns";
+import HowItWorks from "./Pages/HowItWorks";
 
 function App() {
   return (
@@ -16,6 +18,8 @@ function App() {
           <Route path="/create-campaign" element={<CreateCampaign />} />
           <Route path="/campaign/:id" element={<CampaignDetail />} />
           <Route path="/about" element={<About />} />
+          <Route path="/campaigns" element={<Campaigns />} />
+          <Route path="/how-it-works" element={<HowItWorks />} />
         </Routes>
         <Footer />
       </div>

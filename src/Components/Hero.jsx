@@ -1,4 +1,3 @@
-import React from "react";
 import { GoArrowUpRight, GoArrowRight } from "react-icons/go";
 
 const Hero = () => {
@@ -12,7 +11,7 @@ const Hero = () => {
         <div className="flex justify-center z-50">
           <a
             className="group inline-flex items-center bg-white/10 hover:bg-white/10 z-50 border border-white/10 p-1 ps-4 rounded-full shadow-md focus:outline-none focus:bg-white/10"
-            href="#"
+            href="/campaigns"
           >
             <p className="me-2 text-white text-sm">Explore Live Campaign</p>
             <span className="group-hover:bg-white/10 py-1.5 px-2.5 flex justify-center items-center gap-x-2 rounded-full bg-white/10 font-semibold text-white text-sm">

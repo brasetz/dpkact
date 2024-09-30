@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { NavbarLinks } from "../Utils/constants";
 import { useLocation } from "react-router-dom";
-import { TbMenu } from "react-icons/tb";
 import { LiaTimesSolid } from "react-icons/lia";
+import { HiOutlineMenuAlt3 } from "react-icons/hi";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -55,10 +55,10 @@ const Navbar = () => {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden flex items-center text-3xl p-1 focus:outline-none text-white"
+            className="md:hidden flex items-center text-2xl p-1 focus:outline-none text-white"
             onClick={toggleMenu}
           >
-            {isOpen ? <LiaTimesSolid /> : <TbMenu />}
+            {isOpen ? <LiaTimesSolid /> : <HiOutlineMenuAlt3 />}
           </button>
         </div>
 

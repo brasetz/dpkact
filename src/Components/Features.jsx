@@ -1,4 +1,3 @@
-import React from "react";
 import { FiMonitor, FiDollarSign, FiShield, FiUsers } from "react-icons/fi";
 
 const Features = () => {

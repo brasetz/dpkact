@@ -9,11 +9,13 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
 
-  const { connectMetamask } = useContext(MainContext);
+  const { connectMetamask, account } = useContext(MainContext);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
+
+  console.log("account", account);
 
   return (
     <header className="fixed top-3 inset-x-0 flex justify-center z-[9999] before:absolute before:inset-0 max-sm:mx-2 sm:before:max-w-[66rem] before:mx-auto before:rounded-full before:backdrop-blur-md before:bg-white/10">
@@ -48,21 +50,44 @@ const Navbar = () => {
                 {link.name}
               </a>
             ))}
-            <button
-              className="inline-flex items-center py-2 px-4 bg-lime-500 text-white font-medium text-sm rounded-full hover:bg-lime-600 transition-colors duration-300"
-              onClick={connectMetamask}
-            >
-              Connect wallet
-            </button>
+            {account !== "" && account !== undefined && account !== null ? (
+              <a href="/my-campaigns" className="relative inline-block">
+                <img
+                  className="inline-block size-[40px] rounded-full"
+                  src="/user.jpg"
+                  alt="User Avater"
+                />
+                <span className="absolute bottom-0 end-0 block size-3 rounded-full ring-2  bg-lime-500 ring-neutral-50"></span>
+              </a>
+            ) : (
+              <button
+                className="inline-flex items-center py-2 px-4 bg-lime-500 text-white font-medium text-sm rounded-full hover:bg-lime-600 transition-colors duration-300"
+                onClick={connectMetamask}
+              >
+                Connect wallet
+              </button>
+            )}
           </div>
 
+          <div className="flex justify-center items-center gap-2 md:hidden">
+            {account !== "" && account !== undefined && account !== null && (
+              <a href="/my-campaigns" className="relative inline-block">
+                <img
+                  className="inline-block size-[30px] rounded-full"
+                  src="/user.jpg"
+                  alt="User Avater"
+                />
+                <span className="absolute bottom-0 end-0 block size-2 rounded-full ring-2  bg-lime-500 ring-neutral-50"></span>
+              </a>
+            )}
+            <button
+              className="flex items-center text-2xl p-1 focus:outline-none text-white"
+              onClick={toggleMenu}
+            >
+              {isOpen ? <LiaTimesSolid /> : <HiOutlineMenuAlt3 />}
+            </button>
+          </div>
           {/* Mobile Menu Button */}
-          <button
-            className="md:hidden flex items-center text-2xl p-1 focus:outline-none text-white"
-            onClick={toggleMenu}
-          >
-            {isOpen ? <LiaTimesSolid /> : <HiOutlineMenuAlt3 />}
-          </button>
         </div>
 
         {/* Mobile Menu */}
@@ -82,12 +107,17 @@ const Navbar = () => {
               {link.name}
             </a>
           ))}
-          <button
-            className="inline-flex items-center py-2 px-4 bg-lime-500 text-white font-medium text-sm rounded-full hover:bg-lime-600 transition-colors duration-300"
-            onClick={connectMetamask}
-          >
-            Connect wallet
-          </button>
+
+          {account == "" ||
+            account === undefined ||
+            (account === null && (
+              <button
+                className="inline-flex items-center py-2 px-4 bg-lime-500 text-white font-medium text-sm rounded-full hover:bg-lime-600 transition-colors duration-300"
+                onClick={connectMetamask}
+              >
+                Connect wallet
+              </button>
+            ))}
         </div>
       </nav>
     </header>

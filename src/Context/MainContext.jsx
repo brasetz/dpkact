@@ -1,31 +1,18 @@
-import { createContext } from "react";
-import { ethers } from "ethers";
+import { createContext, useState } from "react";
 import PropTypes from "prop-types";
+import { connectMetamask } from "../Utils/connectMetamask";
 
 export const MainContext = createContext();
 
 export const MainProvider = ({ children }) => {
-  const connectMetamask = async () => {
-    if (typeof window.ethereum === "undefined") {
-      console.log("Metamask is not insatlled!");
-      return;
-    }
+  const [account, setAccount] = useState("");
 
-    try {
-      const provider = new ethers.providers.Web3Provider(window.ethereum);
-      const accounts = await provider.send("eth_requestAccounts", []);
-      const signer = provider.getSigner();
-
-      return { signer, accounts };
-    } catch (error) {
-      console.log("error", error);
-    }
-  };
-
+  const connectMetamaskWithAccount = connectMetamask(setAccount);
   return (
     <MainContext.Provider
       value={{
-        connectMetamask,
+        account,
+        connectMetamaskWithAccount,
       }}
     >
       {children}

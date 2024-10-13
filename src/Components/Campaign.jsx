@@ -71,7 +71,7 @@ const Campaign = () => {
                 </div>
                 <div className="mt-auto flex items-center gap-x-3">
                   <span className="inline-flex items-center justify-center size-[40px] text-sm font-semibold leading-none rounded-full bg-white/10 text-white border border-white/10">
-                    {campaign?.creator.slice(0, 3)}
+                    {campaign?.creator?.slice(0, 3)}
                   </span>
                   <div>
                     <a

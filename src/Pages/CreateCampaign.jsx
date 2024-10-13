@@ -24,19 +24,19 @@ const CreateCampaign = () => {
 
             <ul className="mt-2 space-y-2">
               <li className="flex justify-start items-center gap-x-3">
-                <BsCheck2Circle className="text-lime-400" />
+                <BsCheck2Circle className="text-lime-400 size-5" />
                 <span className=" text-gray-300">
                   Easy setup and management
                 </span>
               </li>
               <li className="flex gap-x-3 justify-start items-center">
-                <BsCheck2Circle className="text-lime-400" />
+                <BsCheck2Circle className="text-lime-400 size-5" />
                 <span className=" text-gray-300">
                   Transparent funding and contributions
                 </span>
               </li>
               <li className="flex gap-x-3 justify-start items-center">
-                <BsCheck2Circle className="text-lime-400" />
+                <BsCheck2Circle className="text-lime-400 size-5" />
                 <span className=" text-gray-300">
                   Real-time tracking and analytics
                 </span>

@@ -1,5 +1,6 @@
 import { GoArrowRight, GoArrowUpRight } from "react-icons/go";
 import { projectImgURL } from "../Utils/constants";
+import { Link } from "react-router-dom";
 
 const MyCampaigns = () => {
   return (
@@ -16,22 +17,22 @@ const MyCampaigns = () => {
             Here you can manage and track your campaigns.
           </p>
         </div>
-        <div className="py-5 md:py-0 text-start">
-          <a
+        <div className="py-5 md:py-0 z-50">
+          <Link
+            to={"/create-campaign"}
             className="inline-flex md:justify-center md:items-center gap-x-3 text-center bg-gradient-to-tl from-lime-600 to-lime-600 shadow-lg shadow-transparent hover:shadow-lime-700/50 border border-transparent text-white text-sm font-medium rounded-full focus:outline-none focus:shadow-lime-700/50 py-3 px-4"
-            href="/create-campaign"
           >
             Create new campaign
             <GoArrowRight className="shrink-0 size-4" />
-          </a>
+          </Link>
         </div>
       </div>
       <div className="grid lg:grid-cols-2 lg:gap-y-16 gap-10">
         {[0, 1, 2, 3].map((i) => (
-          <a
+          <Link
             key={i}
             className="group block rounded-xl overflow-hidden focus:outline-none"
-            href={`/campaign/${i}`}
+            to={`/campaign/${i}`}
           >
             <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-5">
               <div className="shrink-0 relative rounded-xl overflow-hidden w-full sm:w-56 h-44">
@@ -56,7 +57,7 @@ const MyCampaigns = () => {
                 </p>
               </div>
             </div>
-          </a>
+          </Link>
         ))}
       </div>
     </div>

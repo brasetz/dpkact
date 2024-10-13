@@ -18,18 +18,21 @@ const Campaign = () => {
         {[0, 1, 2, 3, 4, 5].map((i) => (
           <a
             key={i}
-            className="group flex flex-col h-full border border-white/5 hover:border-transparent hover:shadow-lg focus:outline-none focus:border-transparent focus:shadow-lg transition duration-300 rounded-xl p-5 backdrop-blur-md  bg-white/5"
+            className="group flex flex-col h-full border hover:bg-white/10 border-white/5 0 rounded-xl p-5 backdrop-blur-md  bg-white/5"
             href={`/campaign/${i}`}
           >
             <div className="aspect-w-16 aspect-h-11">
               <img
-                className="w-full object-cover rounded-xl"
+                className="w-full object-cover rounded-xl "
                 src={projectImgURL}
                 alt="Blog Image"
               />
             </div>
             <div className="my-6">
-              <h3 className="text-xl font-semibold text-gray-200">
+              <h3
+                className="relative inline-block font-semibold text-xl before:absolute before:bottom-0.5 before:start-0 before:-z-[1] before:w-full before:h-0.5 before:bg-lime-400 before:transition before:origin-left before:scale-x-0 group-hover:before:scale-x-50 text-white ease-in-out duration-300
+              "
+              >
                 Announcing a free plan for small teams
               </h3>
               <p className="mt-5 text-gray-400 text-sm">

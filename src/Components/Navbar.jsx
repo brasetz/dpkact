@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { NavbarLinks } from "../Utils/constants";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { LiaTimesSolid } from "react-icons/lia";
 import { HiOutlineMenuAlt3 } from "react-icons/hi";
 import { MainContext } from "../Context/MainContext";
@@ -9,22 +9,20 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
 
-  const { connectMetamask, account } = useContext(MainContext);
+  const { connectMetamaskWithAccount, account } = useContext(MainContext);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
-
-  console.log("account", account);
 
   return (
     <header className="fixed top-3 inset-x-0 flex justify-center z-[9999] before:absolute before:inset-0 max-sm:mx-2 sm:before:max-w-[66rem] before:mx-auto before:rounded-full before:backdrop-blur-md before:bg-white/10">
       <nav className="relative max-w-[66rem] w-full py-1 px-1 md:px-3 md:py-2 sm:px-5 flex items-center justify-between  rounded-full mx-2 lg:mx-auto shadow-sm sm:border border-white/10">
         <div className="flex justify-between items-center w-full">
           <div>
-            <a
+            <Link
               className="flex items-center space-x-3 text-lg md:text-xl md:font-semibold text-gray-50 hover:text-lime-400 transition-colors duration-300"
-              href="/"
+              to={"/"}
             >
               <img
                 src="/lomiLogo.png"
@@ -32,37 +30,37 @@ const Navbar = () => {
                 className="w-6 h-6 md:w-8 md:h-8"
               />
               <span>1omi.</span>
-            </a>
+            </Link>
           </div>
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-8">
             {NavbarLinks.map((link, idx) => (
-              <a
+              <Link
                 key={idx}
                 className={`text-sm font-medium  hover:text-lime-400 transition-colors duration-300 ${
                   location.pathname === link.href
                     ? "text-lime-400"
                     : "text-gray-50"
                 }`}
-                href={`${link.href}`}
+                to={`${link.href}`}
               >
                 {link.name}
-              </a>
+              </Link>
             ))}
             {account !== "" && account !== undefined && account !== null ? (
-              <a href="/my-campaigns" className="relative inline-block">
+              <Link to={"/my-campaigns"} className="relative inline-block">
                 <img
-                  className="inline-block size-[40px] rounded-full"
+                  className="inline-block size-[35px] rounded-full"
                   src="/user.jpg"
                   alt="User Avater"
                 />
-                <span className="absolute bottom-0 end-0 block size-3 rounded-full ring-2  bg-lime-500 ring-neutral-50"></span>
-              </a>
+                <span className="absolute bottom-0 end-0 block size-2.5 rounded-full ring-2 bg-lime-500 ring-neutral-50"></span>
+              </Link>
             ) : (
               <button
                 className="inline-flex items-center py-2 px-4 bg-lime-500 text-white font-medium text-sm rounded-full hover:bg-lime-600 transition-colors duration-300"
-                onClick={connectMetamask}
+                onClick={connectMetamaskWithAccount}
               >
                 Connect wallet
               </button>
@@ -71,14 +69,14 @@ const Navbar = () => {
 
           <div className="flex justify-center items-center gap-2 md:hidden">
             {account !== "" && account !== undefined && account !== null && (
-              <a href="/my-campaigns" className="relative inline-block">
+              <Link to={"/my-campaigns"} className="relative inline-block">
                 <img
                   className="inline-block size-[30px] rounded-full"
                   src="/user.jpg"
                   alt="User Avater"
                 />
                 <span className="absolute bottom-0 end-0 block size-2 rounded-full ring-2  bg-lime-500 ring-neutral-50"></span>
-              </a>
+              </Link>
             )}
             <button
               className="flex items-center text-2xl p-1 focus:outline-none text-white"
@@ -99,21 +97,22 @@ const Navbar = () => {
           }`}
         >
           {NavbarLinks.map((link, idx) => (
-            <a
+            <Link
               key={idx}
+              onClick={toggleMenu}
               className="text-sm font-medium text-gray-200 hover:text-lime-500 transition-colors duration-300"
-              href={`${link.href}`}
+              to={`${link.href}`}
             >
               {link.name}
-            </a>
+            </Link>
           ))}
 
-          {account == "" ||
+          {account === "" ||
             account === undefined ||
             (account === null && (
               <button
                 className="inline-flex items-center py-2 px-4 bg-lime-500 text-white font-medium text-sm rounded-full hover:bg-lime-600 transition-colors duration-300"
-                onClick={connectMetamask}
+                onClick={connectMetamaskWithAccount}
               >
                 Connect wallet
               </button>

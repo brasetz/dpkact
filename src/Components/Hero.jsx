@@ -1,11 +1,7 @@
-import { useContext } from "react";
 import { GoArrowUpRight, GoArrowRight } from "react-icons/go";
 import { Link } from "react-router-dom";
-import { MainContext } from "../Context/MainContext";
 
 const Hero = () => {
-  const { getUserCampaigns } = useContext(MainContext);
-
   return (
     <div className="bg-gray-950 flex justify-center items-center pt-10 md:pt-24">
       <div className="flex absolute top-0 left-0 start-1/2 transform -translate-x-1/2 -translate-y-1/2">

@@ -36,25 +36,34 @@ export const getCampaign = async (campaignContractAddress) => {
   return new ethers.Contract(campaignContractAddress, campaignAbi, signer);
 };
 
-// get a campaign detail
-export const getCampaignDetail = async (campaignContractAddress) => {
-  const campaignContract = await getCampaign(campaignContractAddress);
-  const details = await campaignContract.details();
+// get a list of camapaigns
+export const getCampaignsDetail = async () => {
+  const { campaignManagerContract } = await getCampaignManagerContract();
 
-  const campaignDetails = {
-    contractAddress: campaignContractAddress,
-    creator: details.creator,
-    title: details.title,
-    goal: ethers.utils.formatEther(details.goal),
-    deadline: new Date(details.deadline * 1000).toLocaleString(),
-    raisedAmount: ethers.utils.formatEther(details.raisedAmount),
-    successful: details.successful,
-    fundsWithdrawn: details.fundsWithdrawn,
-  };
+  const campaignContractAddresses =
+    await campaignManagerContract.getCampaigns();
 
-  console.log(campaignDetails);
+  const campaignsDetail = await Promise.all(
+    campaignContractAddresses.map(async (contractAddress) => {
+      const campaignContract = await getCampaign(contractAddress);
+      const details = await campaignContract.details();
 
-  return campaignDetails;
+      const campaignDetails = {
+        contractAddress: contractAddress,
+        creator: details.creator,
+        title: details.title,
+        goal: ethers.utils.formatEther(details.goal),
+        deadline: new Date(details.deadline * 1000).toLocaleString(),
+        raisedAmount: ethers.utils.formatEther(details.raisedAmount),
+        successful: details.successful,
+        fundsWithdrawn: details.fundsWithdrawn,
+      };
+
+      return campaignDetails;
+    })
+  );
+
+  return campaignsDetail;
 };
 
 // get a list of user's campaign
@@ -83,7 +92,6 @@ export const getUserCampaigns = async (userAddress) => {
     })
   );
 
-  console.log("userCampaignsDetail", userCampaignsDetail);
 
   return userCampaignsDetail;
 };

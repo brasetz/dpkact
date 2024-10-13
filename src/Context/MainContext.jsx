@@ -6,11 +6,10 @@ import {
 } from "../Utils/connectMetamask";
 import {
   createCampaign,
-  getCampaignDetail,
+  getCampaignsDetail,
   getUserCampaigns,
 } from "../Utils/CampaignManager";
-
-import { getCampaignsDetail } from "../Utils/CampaignContract";
+import { getCampaignDetail } from "../Utils/CampaignContract";
 
 export const MainContext = createContext();
 

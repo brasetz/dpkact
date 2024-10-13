@@ -1,7 +1,30 @@
-import { projectImgURL } from "../Utils/constants";
+import { useEffect, useState } from "react";
 import { GoArrowUpRight } from "react-icons/go";
+import { getCampaignsDetail } from "../Utils/CampaignManager";
+import { Link } from "react-router-dom";
+import SkeletonCard from "./SkeletonCard";
 
 const Campaign = () => {
+  const [campaignList, setCampaignList] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    const fetchCampaigns = async () => {
+      try {
+        setLoading(true);
+        const campaigns = await getCampaignsDetail();
+        setCampaignList(campaigns);
+        console.log("campaigns", campaigns);
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching campaigns:", error);
+        setLoading(false);
+      }
+    };
+
+    fetchCampaigns();
+  }, []);
+
   return (
     <div className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
       <div className="max-w-3xl mx-auto text-center mb-10 lg:mb-14">
@@ -15,41 +38,57 @@ const Campaign = () => {
       </div>
 
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {[0, 1, 2, 3, 4, 5].map((i) => (
-          <a
-            key={i}
-            className="group flex flex-col h-full border hover:bg-white/10 border-white/5 0 rounded-xl p-5 backdrop-blur-md  bg-white/5"
-            href={`/campaign/${i}`}
-          >
-            <div className="aspect-w-16 aspect-h-11">
-              <img
-                className="w-full object-cover rounded-xl "
-                src={projectImgURL}
-                alt="Blog Image"
-              />
-            </div>
-            <div className="my-6">
-              <h3
-                className="relative inline-block font-semibold text-xl before:absolute before:bottom-0.5 before:start-0 before:-z-[1] before:w-full before:h-0.5 before:bg-lime-400 before:transition before:origin-left before:scale-x-0 group-hover:before:scale-x-50 text-white ease-in-out duration-300
-              "
+        {loading ? (
+          Array.from({ length: 3 }).map((_, index) => (
+            <SkeletonCard key={index} />
+          ))
+        ) : (
+          <>
+            {campaignList.map((campaign) => (
+              <Link
+                key={campaign.contractAddress}
+                className="group flex flex-col h-full border hover:bg-white/10 border-white/5 0 rounded-xl p-5 backdrop-blur-md  bg-white/5"
+                to={`/campaign/${campaign?.contractAddress}`}
               >
-                Announcing a free plan for small teams
-              </h3>
-              <p className="mt-5 text-gray-400 text-sm">
-                At Wake, our mission has always been focused on bringing
-                openness.
-              </p>
-            </div>
-            <div className="mt-auto flex items-center gap-x-3">
-              <span className="inline-flex items-center justify-center size-[40px] text-sm font-semibold leading-none rounded-full bg-white/10 text-white border border-white/10">
-                LW
-              </span>
-              <div>
-                <h5 className="text-sm text-gray-100">By Lauren Waller</h5>
-              </div>
-            </div>
-          </a>
-        ))}
+                <div className="aspect-w-16 aspect-h-11">
+                  <img
+                    className="w-full object-cover rounded-xl"
+                    src={"/p2.jpg"}
+                    alt="Campaign Image"
+                  />
+                </div>
+                <div className="my-6">
+                  <h3
+                    className="relative inline-block font-semibold text-xl before:absolute before:bottom-0.5 before:start-0 before:-z-[1] before:w-full before:h-0.5 before:bg-lime-400 before:transition before:origin-left before:scale-x-0 group-hover:before:scale-x-50 text-white ease-in-out duration-300
+              "
+                  >
+                    {campaign?.title}
+                  </h3>
+                  <p className="mt-5 text-gray-400 text-sm">
+                    At Wake, our mission has always been focused on bringing
+                    openness.
+                  </p>
+                </div>
+                <div className="mt-auto flex items-center gap-x-3">
+                  <span className="inline-flex items-center justify-center size-[40px] text-sm font-semibold leading-none rounded-full bg-white/10 text-white border border-white/10">
+                    {campaign?.creator.slice(0, 3)}
+                  </span>
+                  <div>
+                    <a
+                      href={`https://sepolia.etherscan.io/address/${campaign?.creator}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sm text-gray-100 hover:underline flex gap-1 justify-center items-start"
+                    >
+                      Created by {campaign?.creator.slice(0, 10)}...
+                      <GoArrowUpRight />
+                    </a>
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </>
+        )}
       </div>
 
       <div className="mt-12 text-center">

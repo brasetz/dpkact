@@ -1,34 +1,23 @@
 import { ethers } from "ethers";
-import { getCampaign, getCampaignManagerContract } from "./CampaignManager";
+import { getCampaign } from "./CampaignManager";
 
-// get a list of camapaigns
-export const getCampaignsDetail = async () => {
-  const { campaignManagerContract } = await getCampaignManagerContract();
+// get a campaign detail
+export const getCampaignDetail = async (campaignContractAddress) => {
+  const campaignContract = await getCampaign(campaignContractAddress);
+  const details = await campaignContract.details();
 
-  const campaignContractAddresses =
-    await campaignManagerContract.getCampaigns();
+  const campaignDetails = {
+    contractAddress: campaignContractAddress,
+    creator: details.creator,
+    title: details.title,
+    goal: ethers.utils.formatEther(details.goal),
+    deadline: new Date(details.deadline * 1000).toLocaleString(),
+    raisedAmount: ethers.utils.formatEther(details.raisedAmount),
+    successful: details.successful,
+    fundsWithdrawn: details.fundsWithdrawn,
+  };
 
-  const campaignsDetail = await Promise.all(
-    campaignContractAddresses.map(async (contractAddress) => {
-      const campaignContract = await getCampaign(contractAddress);
-      const details = await campaignContract.details();
+  console.log(campaignDetails);
 
-      const campaignDetails = {
-        contractAddress: contractAddress,
-        creator: details.creator,
-        title: details.title,
-        goal: ethers.utils.formatEther(details.goal),
-        deadline: new Date(details.deadline * 1000).toLocaleString(),
-        raisedAmount: ethers.utils.formatEther(details.raisedAmount),
-        successful: details.successful,
-        fundsWithdrawn: details.fundsWithdrawn,
-      };
-
-      return campaignDetails;
-    })
-  );
-
-  console.log("campaignsDetail", campaignsDetail);
-
-  return campaignsDetail;
+  return campaignDetails;
 };

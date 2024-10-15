@@ -14,18 +14,18 @@ export const getCampaignManagerContract = async () => {
 };
 
 // Create campaign
-export const createCampaign = async () => {
+export const createCampaign = async (title, amount, deadline) => {
   const { campaignManagerContract } = await getCampaignManagerContract();
 
+  const amountString = amount.toString();
+
   const tx = await campaignManagerContract.createCampaign(
-    "A test campaign from dev team.",
-    ethers.utils.parseEther("10"),
-    3600
+    title,
+    ethers.utils.parseEther(amountString),
+    deadline
   );
 
-  console.log("Token transfer Loading:", tx.hash);
   await tx.wait();
-  console.log("Token transfer successful:", tx);
 };
 
 // get a campaign contract instance
@@ -91,7 +91,6 @@ export const getUserCampaigns = async (userAddress) => {
       return userCampaignDetails;
     })
   );
-
 
   return userCampaignsDetail;
 };

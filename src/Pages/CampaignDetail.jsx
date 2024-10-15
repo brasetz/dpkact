@@ -23,7 +23,6 @@ const CampaignDetail = () => {
         setLoading(true);
         const campaign = await getCampaignDetail(id);
         setCampaign(campaign);
-        console.log("campaign", campaign);
         setLoading(false);
       } catch (error) {
         console.error("Error fetching campaign:", error);

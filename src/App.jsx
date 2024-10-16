@@ -8,12 +8,14 @@ import About from "./Pages/About";
 import Campaigns from "./Pages/Campaigns";
 import HowItWorks from "./Pages/HowItWorks";
 import MyCampaigns from "./Pages/MyCampaigns";
+import ScrollToTop from "./Components/ScrollToTop";
 
 function App() {
   return (
     <BrowserRouter>
       <div className="bg-gray-950">
         <Navbar />
+        <ScrollToTop />
         <div className="min-h-screen">
           <Routes>
             <Route path="/" element={<Home />} />

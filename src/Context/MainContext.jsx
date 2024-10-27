@@ -18,7 +18,8 @@ export const MainProvider = ({ children }) => {
 
   // connect to metamask
   const connectMetamaskWithAccount = async () => {
-    const { accounts } = connectMetamask();
+    const { provider } = await connectMetamask();
+    const accounts = await provider.send("eth_requestAccounts", []);
     setAccount(accounts[0]);
     window.location.reload();
   };
@@ -26,7 +27,7 @@ export const MainProvider = ({ children }) => {
   // check if wallet is connect
   useEffect(() => {
     checkIfWalletIsConnect(setAccount);
-  }, []);
+  }, [setAccount]);
 
   return (
     <MainContext.Provider

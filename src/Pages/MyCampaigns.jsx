@@ -4,6 +4,7 @@ import { useContext, useEffect, useState } from "react";
 import { getUserCampaigns } from "../Utils/CampaignManager";
 import { MainContext } from "../Context/MainContext";
 import CardLoader from "../Components/CardLoader";
+import Placeholder from "../Components/Placeholder";
 
 const MyCampaigns = () => {
   const [campaignList, setCampaignList] = useState([]);
@@ -32,9 +33,6 @@ const MyCampaigns = () => {
 
   return (
     <div className="max-w-6xl px-4 py-20 sm:px-6 lg:px-8 lg:py-32 mx-auto">
-      <div className="flex absolute top-0 left-0 start-1/2 transform -translate-x-1/2 -translate-y-1/2">
-        <div className="bg-gradient-to-tl blur-3xl w-[55vw] h-[60vh] rounded-full origin-bottom-left -rotate-12 from-lime-900/70 via-indigo-900/70 to-blue-900/70 "></div>
-      </div>
       <div className="max-w-5xl mb-10 lg:mb-14 md:flex justify-between items-start">
         <div>
           <h2 className="text-2xl font-bold md:text-4xl md:leading-tight text-white">
@@ -54,6 +52,18 @@ const MyCampaigns = () => {
           </Link>
         </div>
       </div>
+      <div>
+        <>
+          {!loading && campaignList.length === 0 && (
+            <Placeholder
+              title={"No Campaigns Available"}
+              desc={
+                "You haven't created any campaigns yet. Start by creating your first campaign to see it listed here!"
+              }
+            />
+          )}
+        </>
+      </div>
       <div className="grid lg:grid-cols-2 lg:gap-y-16 gap-10">
         {loading ? (
           Array.from({ length: 2 }).map((_, index) => (
@@ -61,37 +71,39 @@ const MyCampaigns = () => {
           ))
         ) : (
           <>
-            {campaignList.map((campaign) => (
-              <Link
-                key={campaign?.contractAddress}
-                className="group block rounded-xl overflow-hidden focus:outline-none"
-                to={`/campaign/${campaign?.contractAddress}`}
-              >
-                <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-5">
-                  <div className="shrink-0 relative rounded-xl overflow-hidden w-full sm:w-56 h-44">
-                    <img
-                      className="group-hover:scale-105 group-focus:scale-105 transition-transform duration-500 ease-in-out size-full absolute top-0 start-0 object-cover rounded-xl"
-                      src={"/p2.jpg"}
-                      alt="Campaign Image"
-                    />
-                  </div>
+            <>
+              {campaignList.map((campaign) => (
+                <Link
+                  key={campaign?.contractAddress}
+                  className="group block rounded-xl overflow-hidden focus:outline-none"
+                  to={`/campaign/${campaign?.contractAddress}`}
+                >
+                  <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-5">
+                    <div className="shrink-0 relative rounded-xl overflow-hidden w-full sm:w-56 h-44">
+                      <img
+                        className="group-hover:scale-105 group-focus:scale-105 transition-transform duration-500 ease-in-out size-full absolute top-0 start-0 object-cover rounded-xl"
+                        src={"/p2.jpg"}
+                        alt="Campaign Image"
+                      />
+                    </div>
 
-                  <div className="grow">
-                    <h3 className="text-xl font-semibold   text-gray-300 group-hover:text-white">
-                      {campaign?.title}
-                    </h3>
-                    <p className="mt-3  text-gray-300">
-                      Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                      Optio itaque expedita modi facilis...
-                    </p>
-                    <p className="mt-4 inline-flex items-center gap-x-1 text-sm  decoration-2 group-hover:underline group-focus:underline font-medium text-lime-500">
-                      Detail
-                      <GoArrowUpRight />
-                    </p>
+                    <div className="grow">
+                      <h3 className="text-xl font-semibold   text-gray-300 group-hover:text-white">
+                        {campaign?.title}
+                      </h3>
+                      <p className="mt-3  text-gray-300">
+                        Lorem ipsum dolor sit amet consectetur, adipisicing
+                        elit. Optio itaque expedita modi facilis...
+                      </p>
+                      <p className="mt-4 inline-flex items-center gap-x-1 text-sm  decoration-2 group-hover:underline group-focus:underline font-medium text-lime-500">
+                        Detail
+                        <GoArrowUpRight />
+                      </p>
+                    </div>
                   </div>
-                </div>
-              </Link>
-            ))}
+                </Link>
+              ))}
+            </>
           </>
         )}
       </div>

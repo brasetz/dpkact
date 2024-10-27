@@ -3,13 +3,18 @@ import { GoArrowUpRight } from "react-icons/go";
 import { getCampaignsDetail } from "../Utils/CampaignManager";
 import { Link } from "react-router-dom";
 import SkeletonCard from "./SkeletonCard";
+import { useContext } from "react";
+import { MainContext } from "../Context/MainContext";
 
 const Campaign = () => {
+  const { account } = useContext(MainContext);
+
   const [campaignList, setCampaignList] = useState([]);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const fetchCampaigns = async () => {
+      if (!account) return;
       try {
         setLoading(true);
         const campaigns = await getCampaignsDetail();
@@ -22,7 +27,7 @@ const Campaign = () => {
     };
 
     fetchCampaigns();
-  }, []);
+  }, [account]);
 
   return (
     <div className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
@@ -43,7 +48,7 @@ const Campaign = () => {
           ))
         ) : (
           <>
-            {campaignList.map((campaign) => (
+            {campaignList.toReversed().map((campaign) => (
               <Link
                 key={campaign.contractAddress}
                 className="group flex flex-col h-full border hover:bg-white/10 border-white/5 0 rounded-xl p-5 backdrop-blur-md  bg-white/5"
@@ -73,15 +78,14 @@ const Campaign = () => {
                     {campaign?.creator?.slice(0, 3)}
                   </span>
                   <div>
-                    <a
-                      href={`https://sepolia.etherscan.io/address/${campaign?.creator}`}
+                    <p
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-sm text-gray-100 hover:underline flex gap-1 justify-center items-start"
+                      className="text-sm text-gray-100 flex gap-1 justify-center items-start"
                     >
                       Created by {campaign?.creator.slice(0, 10)}...
                       <GoArrowUpRight />
-                    </a>
+                    </p>
                   </div>
                 </div>
               </Link>

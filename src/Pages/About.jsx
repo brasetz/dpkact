@@ -24,7 +24,7 @@ const About = () => {
                 </p>
                 <a
                   className="mt-2 inline-flex items-center gap-x-1 text-sm focus:outline-none  text-gray-300 hover:text-gray-100 focus:text-gray-200"
-                  href="https://t.me/halas7"
+                  href="https://t.me/#"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -44,7 +44,7 @@ const About = () => {
                 </p>
                 <a
                   className="mt-2 inline-flex items-center gap-x-1 text-sm   hover: focus:outline-none focus: text-gray-300 hover:text-gray-100 focus:text-gray-200"
-                  href="https://github.com/halas77"
+                  href="https://github.com/#"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -64,7 +64,7 @@ const About = () => {
                 </p>
                 <a
                   className="mt-2 inline-flex items-center gap-x-1 text-sm   hover: focus:outline-none focus: text-gray-300 hover:text-gray-100 focus:text-gray-200"
-                  href="https://www.linkedin.com/in/dawit-mellese/"
+                  href="https://www.linkedin.com/in/#/"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -84,11 +84,11 @@ const About = () => {
                 </p>
                 <a
                   className="mt-2 inline-flex items-center gap-x-1 text-sm   hover: focus:outline-none focus: text-gray-300 hover:text-gray-100 focus:text-gray-200"
-                  href="tel:+251938071193"
+                  href="tel:+1234567890"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  +251 938 071193
+                  +1 234 567 890
                   <GoArrowUpRight />
                 </a>
               </div>
@@ -104,11 +104,11 @@ const About = () => {
                 </p>
                 <a
                   className="mt-2 inline-flex items-center gap-x-1 text-sm   hover: focus:outline-none focus: text-gray-300 hover:text-gray-100 focus:text-gray-200"
-                  href="mailto:dawitm777@gmail.com"
+                  href="mailto:contact@lomi.com"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  dawitm777@gmail.com
+                  contact@lomi.com
                   <GoArrowUpRight />
                 </a>
               </div>

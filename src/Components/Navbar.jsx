@@ -107,16 +107,14 @@ const Navbar = () => {
             </Link>
           ))}
 
-          {account === "" ||
-            account === undefined ||
-            (account === null && (
-              <button
-                className="inline-flex items-center py-2 px-4 bg-lime-500 text-white font-medium text-sm rounded-full hover:bg-lime-600 transition-colors duration-300"
-                onClick={connectMetamaskWithAccount}
-              >
-                Connect wallet
-              </button>
-            ))}
+          {!account && (
+            <button
+              className="inline-flex items-center py-2 px-4 bg-lime-500 text-white font-medium text-sm rounded-full hover:bg-lime-600 transition-colors duration-300"
+              onClick={connectMetamaskWithAccount}
+            >
+              Connect wallet
+            </button>
+          )}
         </div>
       </nav>
     </header>

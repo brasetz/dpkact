@@ -6,14 +6,17 @@ import {
 } from "react-icons/fa";
 import BackersTable from "../Components/BackersTable";
 import { useEffect, useState } from "react";
-import { getCampaignDetail } from "../Utils/CampaignContract";
+import { contribute, getCampaignDetail } from "../Utils/CampaignContract";
 import { useParams } from "react-router-dom";
 import { GoArrowUpRight } from "react-icons/go";
 import Loader from "../Components/Loader";
+import { toast } from "react-toastify";
 
 const CampaignDetail = () => {
   const [campaign, setCampaign] = useState({});
   const [loading, setLoading] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [amount, setAmount] = useState("");
 
   const { id } = useParams();
 
@@ -32,6 +35,23 @@ const CampaignDetail = () => {
 
     fetchCampaigns();
   }, [id]);
+
+  const handleContribute = async () => {
+    if (!amount || amount < 0) {
+      toast.error("Please provide valid amount.");
+      return;
+    }
+    try {
+      console.log("amount", amount);
+      setSubmitting(true);
+      await contribute(id, amount);
+      setSubmitting(false);
+      window.location.reload();
+    } catch (error) {
+      console.log("error", error);
+      setSubmitting(false);
+    }
+  };
 
   return (
     <div className="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 lg:py-32 py-20">
@@ -64,7 +84,7 @@ const CampaignDetail = () => {
                 <FaFlagCheckered className="text-blue-500" />{" "}
                 {/* Target icon */}
                 <p className="font-semibold">Target:</p>
-                <p> {campaign?.goal} ethers</p>
+                <p> {campaign?.goal} ether</p>
               </div>
               <div className="flex items-center gap-2">
                 <FaCalendarAlt className="text-purple-500" />{" "}
@@ -76,7 +96,7 @@ const CampaignDetail = () => {
               <div className="flex items-center gap-2">
                 <FaCoins className="text-green-500" /> {/* Raised icon */}
                 <p className="font-semibold">Raised:</p>
-                <p> {campaign?.raisedAmount} ethers</p>
+                <p> {campaign?.raisedAmount} ether</p>
               </div>
               <div className="flex items-center gap-2">
                 <FaClock className="text-red-500" /> {/* Due date icon */}
@@ -93,14 +113,22 @@ const CampaignDetail = () => {
                 <input
                   type="number"
                   step={"0.0001"}
+                  required
+                  min={0}
                   id="hero-input"
+                  value={amount}
+                  onChange={(e) => setAmount(e.target.value)}
                   name="hero-input"
                   className="py-3 text-white ring-0 placeholder:text-gray-300 px-4 block w-full min-w-80 bg-white/10 border border-white/20 rounded-full text-sm focus:border-lime-500 focus:ring-lime-500 disabled:opacity-50 disabled:pointer-events-none"
                   placeholder="Enter amount ..."
                 />
               </div>
-              <button className="w-full sm:w-auto py-3 px-8 inline-flex justify-center items-center gap-x-2 text-sm font-medium shadow-sm shadow-lime-400 rounded-full border border-transparent bg-lime-500 text-white hover:bg-lime-600 focus:outline-none focus:bg-lime-600 disabled:opacity-50 disabled:pointer-events-none">
-                Contribute
+              <button
+                onClick={handleContribute}
+                disabled={submitting}
+                className="w-full sm:w-auto py-3 px-8 inline-flex justify-center items-center gap-x-2 text-sm font-medium shadow-sm shadow-lime-400 rounded-full border border-transparent bg-lime-500 text-white hover:bg-lime-600 focus:outline-none focus:bg-lime-600 disabled:opacity-50 disabled:pointer-events-none"
+              >
+                {submitting ? "Sending..." : "Contribute"}
               </button>
             </div>
             <div className="my-10 flex items-center gap-x-3">
